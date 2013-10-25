@@ -1,6 +1,6 @@
 # dasheets-collection
 
-Cheatsheet collection for Dasheets
+Cheatsheet collection for [Dasheets](https://github.com/Nix-wie-weg/dasheets)
 
 ## Contributing
 
