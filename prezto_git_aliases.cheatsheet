@@ -1,0 +1,690 @@
+cheatsheet do
+  title 'Prezto • Git Aliases'
+  short_name 'g'
+
+  category do
+    id 'Git'
+    entry do
+      name 'is short for git.'
+      command 'g'
+      notes 'git'
+    end
+  end
+
+  category do
+    id 'Branch'
+    entry do
+      name 'lists, creates, renames, and deletes branches.'
+      command 'gb'
+      notes 'git branch'
+    end
+    entry do
+      name 'creates a new branch.'
+      command 'gbc'
+      notes 'git checkout -b'
+    end
+    entry do
+      name 'lists branches and their commits.'
+      command 'gbl'
+      notes 'git branch -v'
+    end
+    entry do
+      name 'lists local and remote branches and their commits.'
+      command 'gbL'
+      notes 'git branch -av'
+    end
+    entry do
+      name 'lists branches and their commits with ancestry graphs.'
+      command 'gbs'
+      notes 'git show-branch'
+    end
+    entry do
+      name 'lists local and remote branches and their commits with ancestry graphs.'
+      command 'gbS'
+      notes 'git show-branch -a'
+    end
+    entry do
+      name 'deletes a branch.'
+      command 'gbx'
+      notes 'git branch -d'
+    end
+    entry do
+      name 'deletes a branch irrespective of its merged status.'
+      command 'gbX'
+      notes 'git branch -D'
+    end
+    entry do
+      name 'renames a branch.'
+      command 'gbm'
+      notes 'git branch -m'
+    end
+    entry do
+      name 'renames a branch even if the new branch name already exists.'
+      command 'gbM'
+      notes 'git branch -M'
+    end
+  end
+
+  category do
+    id 'Commit'
+    entry do
+      name 'records changes to the repository.'
+      command 'gc'
+      notes 'git commit --verbose'
+    end
+    entry do
+      name 'stages all modified and deleted files.'
+      command 'gca'
+      notes 'git commit --verbose --all'
+    end
+    entry do
+      name 'records changes to the repository with the given message.'
+      command 'gcm'
+      notes 'git commit --message'
+    end
+    entry do
+      name 'gco'
+      command 'checks out a branch or paths to work tree.'
+      notes 'git checkout'
+    end
+    entry do
+      name 'gcO'
+      command 'checks out hunks from the index or the tree interactively.'
+      notes 'git checkout --patch'
+    end
+    entry do
+      name 'amends the tip of the current branch using the same log message as HEAD.'
+      command 'gcf'
+      notes 'git commit --amend --reuse-message HEAD'
+    end
+    entry do
+      name 'amends the tip of the current branch.'
+      command 'gcF'
+      notes 'git commit --verbose --amend'
+    end
+    entry do
+      name 'applies changes introduced by existing commits.'
+      command 'gcp'
+      notes 'git cherry-pick --ff'
+    end
+    entry do
+      name 'applies changes introduced by existing commits without committing.'
+      command 'gcP'
+      notes 'git cherry-pick --no-commit'
+    end
+    entry do
+      name 'reverts existing commits by reverting patches and recording new commits.'
+      command 'gcr'
+      notes 'git revert'
+    end
+    entry do
+      name 'removes the HEAD commit.'
+      command 'gcR'
+      notes 'git reset "HEAD^"'
+    end
+    entry do
+      name 'displays various types of objects.'
+      command 'gcs'
+      notes 'git show'
+    end
+    entry do
+      name 'lists lost commits.'
+      command 'gcl'
+      notes 'git-commit-lost'
+    end
+  end
+
+  category do
+    id 'Conflict'
+    entry do
+      name 'lists unmerged files.'
+      command 'gCl'
+      notes 'git status | sed -n "s/^.*both [a-z]*ed: *//p"'
+    end
+    entry do
+      name 'adds unmerged file contents to the index.'
+      command 'gCa'
+      notes 'git add $(gCl)'
+    end
+    entry do
+      name 'executes merge-tool on all unmerged file.'
+      command 'gCe'
+      notes 'git mergetool $(gCl)'
+    end
+    entry do
+      name 'checks out our changes for unmerged paths.'
+      command 'gCo'
+      notes 'git checkout --ours --'
+    end
+    entry do
+      name 'checks out our changes for all unmerged paths.'
+      command 'gCO'
+      notes 'gCo $(gCl)'
+    end
+    entry do
+      name 'checks out their changes for unmerged paths.'
+      command 'gCt'
+      notes 'git checkout --theirs --'
+    end
+    entry do
+      name 'checks out their changes for all unmerged paths.'
+      command 'gCT'
+      notes 'gCt $(gCl)'
+    end
+  end
+
+  category do
+    id 'Data'
+    entry do
+      name 'displays information about files in the index and the work tree.'
+      command 'gd'
+      notes 'git ls-files'
+    end
+    entry do
+      name 'lists cached files.'
+      command 'gdc'
+      notes 'git ls-files --cached'
+    end
+    entry do
+      name 'lists deleted files.'
+      command 'gdx'
+      notes 'git ls-files --deleted'
+    end
+    entry do
+      name 'lists modified files.'
+      command 'gdm'
+      notes 'git ls-files --modified'
+    end
+    entry do
+      name 'lists untracked files.'
+      command 'gdu'
+      notes 'git ls-files --other --exclude-standard'
+    end
+    entry do
+      name 'lists killed files.'
+      command 'gdk'
+      notes 'git ls-files --killed'
+    end
+    entry do
+      name 'lists ignored files.'
+      command 'gdi'
+      notes 'git status --porcelain --short --ignored | sed -n "s/^!! //p"'
+    end
+  end
+
+  category do
+    id 'Fetch'
+    entry do
+      name 'downloads objects and references from another repository.'
+      command 'gf'
+      notes 'git fetch'
+    end
+    entry do
+      name 'clones a repository into a new directory.'
+      command 'gfc'
+      notes 'git clone'
+    end
+    entry do
+      name 'fetches from and merges with another repository or local branch.'
+      command 'gfm'
+      notes 'git pull'
+    end
+    entry do
+      name 'fetches from and rebases on another repository or local branch.'
+      command 'gfr'
+      notes 'git pull --rebase'
+    end
+  end
+
+  category do
+    id 'Grep'
+    entry do
+      name 'displays lines matching a pattern.'
+      command 'gg'
+      notes 'git grep'
+    end
+    entry do
+      name 'displays lines matching a pattern ignoring case.'
+      command 'ggi'
+      notes 'git grep --ignore-case'
+    end
+    entry do
+      name 'lists files matching a pattern.'
+      command 'ggl'
+      notes 'git grep --files-with-matches'
+    end
+    entry do
+      name 'lists files that are not matching a pattern.'
+      command 'ggL'
+      notes 'git grep --files-without-matches'
+    end
+    entry do
+      name 'displays lines not matching a pattern.'
+      command 'ggv'
+      notes 'git grep --invert-match'
+    end
+    entry do
+      name 'displays lines matching a pattern at word boundary.'
+      command 'ggw'
+      notes 'git grep --word-regexp'
+    end
+  end
+
+  category do
+    id 'Index'
+    entry do
+      name 'adds file contents to the index.'
+      command 'gia'
+      notes 'git add'
+    end
+    entry do
+      name 'adds file contents to the index interactively.'
+      command 'giA'
+      notes 'git add --patch'
+    end
+    entry do
+      name 'adds file contents to the index (updates only known files).'
+      command 'giu'
+      notes 'git add --update'
+    end
+    entry do
+      name 'displays changes between the index and a named commit (diff).'
+      command 'gid'
+      notes 'git diff --no-ext-diff --cached'
+    end
+    entry do
+      name 'displays changes between the index and a named commit (word diff).'
+      command 'giD'
+      notes 'git diff --no-ext-diff --cached --word-diff'
+    end
+    entry do
+      name 'resets the current HEAD to the specified state.'
+      command 'gir'
+      notes 'git reset'
+    end
+    entry do
+      name 'resets the current index interactively.'
+      command 'giR'
+      notes 'git reset --patch'
+    end
+    entry do
+      name 'removes files/directories from the index (recursively).'
+      command 'gix'
+      notes 'git rm -r --cached'
+    end
+    entry do
+      name 'removes files/directories from the index (recursively and forced).'
+      command 'giX'
+      notes 'git rm -rf --cached'
+    end
+  end
+
+  category do
+    id 'Log'
+    entry do
+      name 'displays the log.'
+      command 'gl'
+      notes 'git log --topo-order --pretty=format:${_git_log_medium_format}'
+    end
+    entry do
+      name 'displays the stats log.'
+      command 'gls'
+      notes 'git log --topo-order --stat --pretty=format:${_git_log_medium_format}'
+    end
+    entry do
+      name 'displays the diff log.'
+      command 'gld'
+      notes 'git log --topo-order --stat --patch --full-diff --pretty=format:${_git_log_medium_format}'
+    end
+    entry do
+      name 'displays the one line log.'
+      command 'glo'
+      notes 'git log --topo-order --pretty=format:${_git_log_oneline_format}'
+    end
+    entry do
+      name 'displays the graph log.'
+      command 'glg'
+      notes 'git log --topo-order --all --graph --pretty=format:${_git_log_oneline_format}'
+    end
+    entry do
+      name 'displays the brief commit log.'
+      command 'glb'
+      notes 'git log --topo-order --pretty=format:${_git_log_brief_format}'
+    end
+    entry do
+      name 'displays the commit count for each contributor in descending order.'
+      command 'glc'
+      notes 'git shortlog --summary --numbered'
+    end
+  end
+
+  category do
+    id 'Merge'
+    entry do
+      name 'joins two or more development histories together.'
+      command 'gm'
+      notes 'git merge'
+    end
+    entry do
+      name 'joins two or more development histories together but does not commit.'
+      command 'gmC'
+      notes 'git merge --no-commit'
+    end
+    entry do
+      name 'joins two or more development histories together but does not commit generating a merge commit even if the merge resolved as a fast-forward.'
+      command 'gmF'
+      notes 'git merge --no-ff'
+    end
+    entry do
+      name 'aborts the conflict resolution, and reconstructs the pre-merge state.'
+      command 'gma'
+      notes 'git merge --abort'
+    end
+    entry do
+      name 'runs the merge conflict resolution tools to resolve conflicts.'
+      command 'gmt'
+      notes 'git mergetool'
+    end
+  end
+
+  category do
+    id 'Push'
+    entry do
+      name 'updates remote refs along with associated objects.'
+      command 'gp'
+      notes 'git push'
+    end
+    entry do
+      name 'forcefully updates remote refs along with associated objects.'
+      command 'gpf'
+      notes 'git push --force'
+    end
+    entry do
+      name 'updates remote branches along with associated objects.'
+      command 'gpa'
+      notes 'git push --all'
+    end
+    entry do
+      name 'updates remote branches and tags along with associated objects.'
+      command 'gpA'
+      notes 'git push --all && git push --tags'
+    end
+    entry do
+      name 'updates remote tags along with associated objects.'
+      command 'gpt'
+      notes 'git push --tags'
+    end
+    entry do
+      name 'updates remote refs along with associated objects and adds origin as an upstream reference for the current branch.'
+      command 'gpc'
+      notes 'git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+    end
+    entry do
+      name 'pulls and pushes from origin to origin.'
+      command 'gpp'
+      notes 'git pull origin "$(git-branch-current 2> /dev/null)" && git push origin "$(git-branch-current 2> /dev/null)"'
+    end
+  end
+
+  category do
+    id 'Rebase'
+    entry do
+      name 'forward-ports local commits to the updated upstream head.'
+      command 'gr'
+      notes 'git rebase'
+    end
+    entry do
+      name 'aborts the rebase.'
+      command 'gra'
+      notes 'git rebase --abort'
+    end
+    entry do
+      name 'continues the rebase after merge conflicts are resolved.'
+      command 'grc'
+      notes 'git rebase --continue'
+    end
+    entry do
+      name 'makes a list of commits to be rebased and opens the editor.'
+      command 'gri'
+      notes 'git rebase --interactive'
+    end
+    entry do
+      name 'skips the current patch.'
+      command 'grs'
+      notes 'git rebase --skip'
+    end
+  end
+
+  category do
+    id 'Remote'
+    entry do
+      name 'manages tracked repositories.'
+      command 'gR'
+      notes 'git remote'
+    end
+    entry do
+      name 'lists remote names and their URLs.'
+      command 'gRl'
+      notes 'git remote --verbose'
+    end
+    entry do
+      name 'adds a new remote.'
+      command 'gRa'
+      notes 'git remote add'
+    end
+    entry do
+      name 'removes a remote.'
+      command 'gRx'
+      notes 'git remote rm'
+    end
+    entry do
+      name 'renames a remote.'
+      command 'gRm'
+      notes 'git remote rename'
+    end
+    entry do
+      name 'fetches remotes updates.'
+      command 'gRu'
+      notes 'git remote update'
+    end
+    entry do
+      name 'prunes all stale remote tracking branches.'
+      command 'gRp'
+      notes 'git remote prune'
+    end
+    entry do
+      name 'displays information about a given remote.'
+      command 'gRs'
+      notes 'git remote show'
+    end
+    entry do
+      name 'opens a remote on GitHub in the default browser.'
+      command 'gRb'
+      notes 'git-hub-browse'
+    end
+  end
+
+  category do
+    id 'Stash'
+    entry do
+      name 'stashes the changes of the dirty working directory.'
+      command 'gs'
+      notes 'git stash'
+    end
+    entry do
+      name 'applies the changes recorded in a stash to the working directory.'
+      command 'gsa'
+      notes 'git stash apply'
+    end
+    entry do
+      name 'drops a stashed state.'
+      command 'gsx'
+      notes 'git stash drop'
+    end
+    entry do
+      name 'drops all the stashed states.'
+      command 'gsX'
+      notes 'git-stash-clear-interactive'
+    end
+    entry do
+      name 'lists stashed states.'
+      command 'gsl'
+      notes 'git stash list'
+    end
+    entry do
+      name 'lists dropped stashed states.'
+      command 'gsL'
+      notes 'git-stash-dropped'
+    end
+    entry do
+      name 'displays changes between the stash and its original parent.'
+      command 'gsd'
+      notes 'git stash show --patch --stat'
+    end
+    entry do
+      name 'removes and applies a single stashed state from the stash list.'
+      command 'gsp'
+      notes 'git stash pop'
+    end
+    entry do
+      name 'recovers a given stashed state.'
+      command 'gsr'
+      notes 'git-stash-recover'
+    end
+    entry do
+      name 'stashes the changes of the dirty working directory, including untracked.'
+      command 'gss'
+      notes 'git stash save --include-untracked'
+    end
+    entry do
+      name 'stashes the changes of the dirty working directory interactively.'
+      command 'gsS'
+      notes 'git stash save --patch --no-keep-index'
+    end
+    entry do
+      name 'stashes the changes of the dirty working directory retaining the index.'
+      command 'gsw'
+      notes 'git stash save --include-untracked --keep-index'
+    end
+  end
+
+  category do
+    id 'Submodule'
+    entry do
+      name 'initializes, updates, or inspects submodules.'
+      command 'gS'
+      notes 'git submodule'
+    end
+    entry do
+      name 'adds given a repository as a submodule.'
+      command 'gSa'
+      notes 'git submodule add'
+    end
+    entry do
+      name 'evaluates a shell command in each of checked out submodules.'
+      command 'gSf'
+      notes 'git submodule foreach'
+    end
+    entry do
+      name 'initializes submodules.'
+      command 'gSi'
+      notes 'git submodule init'
+    end
+    entry do
+      name 'initializes and clones submodules recursively.'
+      command 'gSI'
+      notes 'git submodule update --init --recursive'
+    end
+    entry do
+      name 'lists the commits of all submodules.'
+      command 'gSl'
+      notes 'git submodule status'
+    end
+    entry do
+      name 'moves a submodule.'
+      command 'gSm'
+      notes 'git-submodule-move'
+    end
+    entry do
+      name 'synchronizes submodules\' remote URL to the value specified in .gitmodules.'
+      command 'gSs'
+      notes 'git submodule sync'
+    end
+    entry do
+      name 'fetches and merges the latest changes for all submodule.'
+      command 'gSu'
+      notes 'git submodule foreach git pull origin master'
+    end
+    entry do
+      name 'removes a submodule.'
+      command 'gSx'
+      notes 'git-submodule-remove'
+    end
+  end
+
+  category do
+    id 'Working directory'
+    entry do
+      name 'displays working-tree status in the short format.'
+      command 'gws'
+      notes 'git status --ignore-submodules=${_git_status_ignore_submodules} --short'
+    end
+    entry do
+      name 'displays working-tree status.'
+      command 'gwS'
+      notes 'git status --ignore-submodules=${_git_status_ignore_submodules}'
+    end
+    entry do
+      name 'displays changes between the working tree and the index (diff).'
+      command 'gwd'
+      notes 'git diff --no-ext-diff'
+    end
+    entry do
+      name 'displays changes between the working tree and the index (word diff).'
+      command 'gwD'
+      notes 'git diff --no-ext-diff --word-diff'
+    end
+    entry do
+      name 'resets the current HEAD to the specified state, does not touch the index nor the working tree.'
+      command 'gwr'
+      notes 'git reset --soft'
+    end
+    entry do
+      name 'resets the current HEAD, index and working tree to the specified state.'
+      command 'gwR'
+      notes 'git reset --hard'
+    end
+    entry do
+      name 'removes untracked files from the working tree (dry-run).'
+      command 'gwc'
+      notes 'git clean -n'
+    end
+    entry do
+      name 'removes untracked files from the working tree.'
+      command 'gwC'
+      notes 'git clean -f'
+    end
+    entry do
+      name 'removes files from the working tree and from the index recursively.'
+      command 'gwx'
+      notes 'git rm -r'
+    end
+    entry do
+      name 'removes files from the working tree and from the index recursively and forcefully.'
+      command 'gwX'
+      notes' git rm -rf'
+    end
+  end
+
+  category do
+    id 'Shadows'
+    entry do
+      name 'shadows the GUID partition table maintenance utility.'
+      command 'gpt'
+    end
+    entry do
+      name 'shadows the Ghostscript.'
+      command 'gs'
+    end
+  end
+end
