@@ -83,13 +83,13 @@ cheatsheet do
       notes 'git commit --message'
     end
     entry do
-      name 'gco'
-      command 'checks out a branch or paths to work tree.'
+      name 'checks out a branch or paths to work tree.'
+      command 'gco'
       notes 'git checkout'
     end
     entry do
-      name 'gcO'
-      command 'checks out hunks from the index or the tree interactively.'
+      name 'checks out hunks from the index or the tree interactively.'
+      command 'gcO'
       notes 'git checkout --patch'
     end
     entry do
