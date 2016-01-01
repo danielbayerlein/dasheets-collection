@@ -12,4 +12,4 @@ Cheatsheet collection for [Dasheets](https://github.com/Nix-wie-weg/dasheets)
 
 ## Copyright
 
-Copyright (c) 2015 Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
+Copyright (c) 2016 Daniel Bayerlein. See [LICENSE](./LICENSE.md) for details.
